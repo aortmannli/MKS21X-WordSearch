@@ -120,6 +120,17 @@ public class WordSearch{
      *        OR there are overlapping letters that do not match
      */
     private boolean addWord(String word,int row, int col, int rowIncrement, int colIncrement){
+      if (rowIncrement == 0 && colIncrement == 0) return false;
+      if (row > data.length || col > data[row].length || word.length() > data.length - row || word.length() > data[row].length - col) return false;
+      for (int i = 0; i < word.length(); i++) {
+        int a = i*rowIncrement;
+        int b = i*colIncrement;
+       if (data[row + a][col + b] != word.charAt(i) && data[row + a][col + b] != '_') return false;
+      }
+      for (int i = 0; i < word.length(); i++){
+        data[row + (i*rowIncrement)][col + (i*colIncrement)] = word.charAt(i);
+      }
+      return true;
     }
 
     /*[rowIncrement,colIncrement] examples:
