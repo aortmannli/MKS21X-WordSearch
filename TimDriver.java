@@ -61,7 +61,7 @@ public class TimDriver {
       _ _ _ _ _ _ _ _ _ _
     */
 
-    /*System.out.println("WSe.addWordHorizontal(\"REDXIII\",0,2)");
+    System.out.println("WSe.addWordHorizontal(\"REDXIII\",0,2)");
     if(WSe.addWordHorizontal("REDXIII",0,2)) {
       System.out.println("> addition success.");
       System.out.println("> TEST CASE - FAIL");
@@ -71,9 +71,9 @@ public class TimDriver {
     }
     // > addition failure.
     // should fail, REDXIII is within bounds, yes destructive interference*/
-/*
-    System.out.println(WSe);
 
+    System.out.println(WSe);
+    /* 
       _ _ _ _ _ T I F A _
       _ _ _ _ _ _ _ _ _ _
       _ _ _ _ _ _ _ _ _ _
