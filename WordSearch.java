@@ -80,18 +80,25 @@ public class WordSearch{
 
       for(int i = 0 ;(wordsToAdd.size() > 0)&& (i + 100 < size) ; i++){
         String str = "";
-        if(wordsToAdd.size() == 1) w = wordsToAdd.get(0);
+        if(wordsToAdd.size() == 1) str = wordsToAdd.get(0);
         else  w = wordsToAdd.get(Math.abs(randgen.nextInt() % (wordsToAdd.size())));
 
         rowIncrement = 0;
         colIncrement = 0;
         while (rowIncrement == 0 && colIncrement == 0){
-          int rowIncrement = randgen.nextInt() % 2;
-          int colIncrement = randgen.nextInt() % 2;
+          int rowIncrement = randgen.nextInt(3)-1;
+          int colIncrement = randgen.nextInt(3)-1;
         }
         rowIncrement = data.length;
         colIncrement = 0;
+        rows = Math.abs(randgen.nextInt() % (rowIncrement + 1));
+        cols = Math.abs(randgen.nextInt() % (colIncrement + 1));
         if (rowIncrement > 0) colIncrement = data[0].length;
+        boolean add = false;
+        if (addWord(str,rows,cols,rowIncrement, colIncrement)){
+          add = true;
+          i += 100;
+        }
 
       }
     }
