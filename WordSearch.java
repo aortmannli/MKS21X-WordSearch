@@ -50,14 +50,14 @@ public class WordSearch{
     }
 
     public String toString(){
-      String out = "";
-      for (int i = 0; i < data.length; i++) {
-        for (int x = 0; x < data[0].length; x++) {
-          out += data[i][x] + " ";
+      String out = "|";
+        for (int i = 0; i < data.length; i ++){
+          for (int x = 0;  < data[i].length; x ++){
+            out += data[i][x] + " ";
+          }
+          out += "|\n|";
         }
-        out += "\n";
-      }
-    return out;
+      return out.substring(0, out.length() - 1);
     }
 
     private boolean addWord(String word,int row, int col, int rowIncrement, int colIncrement){
