@@ -75,20 +75,24 @@ public class WordSearch{
     }
 
     private void addAllWords(){
+      // was stuck and Grace Mao explained the algorithm to me so code might have similarities
       int size = wordsToAdd.size();
 
-      for(int i = 0 ;(wordsToAdd > 0)&& (i + 100 < size) ; i++){
+      for(int i = 0 ;(wordsToAdd.size() > 0)&& (i + 100 < size) ; i++){
+        String str = "";
+        if(wordsToAdd.size() == 1) w = wordsToAdd.get(0);
+        else  w = wordsToAdd.get(Math.abs(randgen.nextInt() % (wordsToAdd.size())));
 
+        rowIncrement = 0;
+        colIncrement = 0;
         while (rowIncrement == 0 && colIncrement == 0){
           int rowIncrement = randgen.nextInt() % 2;
           int colIncrement = randgen.nextInt() % 2;
         }
+        rowIncrement = data.length;
+        colIncrement = 0;
+        if (rowIncrement > 0) colIncrement = data[0].length;
 
-        if(){
-
-        }else{
-          
-        }
       }
     }
 
