@@ -76,8 +76,19 @@ public class WordSearch{
 
     private void addAllWords(){
       int size = wordsToAdd.size();
-      for(int i = 0 ; i + 100 < size; i++{
 
+      for(int i = 0 ;(wordsToAdd > 0)&& (i + 100 < size) ; i++){
+
+        while (rowIncrement == 0 && colIncrement == 0){
+          int rowIncrement = randgen.nextInt() % 2;
+          int colIncrement = randgen.nextInt() % 2;
+        }
+
+        if(){
+
+        }else{
+          
+        }
       }
     }
 
