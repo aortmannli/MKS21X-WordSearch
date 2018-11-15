@@ -179,4 +179,8 @@ public class WordSearch{
      *[ 1,0] would add downwards because (row+1), with no col change
      *[ 0,-1] would add towards the left because (col - 1), with no row change
      */
+
+     private void addAllWords() {
+
+     }
 }
