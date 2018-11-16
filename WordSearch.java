@@ -87,18 +87,20 @@ public class WordSearch{
 
   private boolean addWord(String word,int row, int col, int rowIncrement, int colIncrement){
     if (rowIncrement == 0 && colIncrement == 0) return false;
-    if (row > data.length || col > data[row].length || word.length() > data.length - row || word.length() > data[row].length - col) return false;
+    if (row + rowIncrement * word.length() > data.length || col + colIncrement * word.length() > data[row].length) return false;
+    if (row + rowIncrement * word.length() < 0 || col + colIncrement * word.length() < 0) return false;
 
     for (int i = 0; i < word.length(); i++) {
       int a = i*rowIncrement;
       int b = i*colIncrement;
-      if (data[row + a][col + b] != word.charAt(i) && data[row + a][col + b] != '_') return false;
+      if (data[row + a][col + b] != word.charAt(i) && data[row + a][col + b] != ' ') return false;
     }
 
     for (int i = 0; i < word.length(); i++){
       data[row + (i*rowIncrement)][col + (i*colIncrement)] = word.charAt(i);
     }
-
+    wordsToAdd.remove(word);
+    wordsAdded.add(word);
     return true;
   }
 
