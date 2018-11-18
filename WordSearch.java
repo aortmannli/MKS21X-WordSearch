@@ -21,7 +21,10 @@ public class WordSearch{
     if (args.length == 5 && args[4].equals("key")) {
       answer = true;
     }
+
+
     WordSearch result = new WordSearch(rows, cols, fileN, seed, answer);
+
     System.out.println(result);
 
   }
@@ -39,6 +42,7 @@ public class WordSearch{
     while (in.hasNext()) {
       wordsToAdd.add(in.nextLine().toUpperCase());
     }
+
     addAllWords();
   }
 
@@ -54,7 +58,9 @@ public class WordSearch{
     while (in.hasNext()) {
       wordsToAdd.add(in.nextLine().toUpperCase());
     }
-    addAllWords();
+    System.out.println(wordsToAdd);
+    addWord("YEET",1,5,1,0);
+    //addAllWords();
     if (!ans) {
     fill();
     }
@@ -107,14 +113,14 @@ public class WordSearch{
   private void addAllWords(){
   // was stuck and Grace Mao explained the algorithm to me so code might have similarities
     int x = 0;
-    while (!wordsToAdd.isEmpty() && x < 50){
+    while (!wordsToAdd.isEmpty() && x < 5000){
       boolean add = false;
-      int rowIncrement = 0;
-      int colIncrement = 0;
-      while (rowIncrement == 0 && colIncrement == 0){
+      int colIncrement = randgen.nextInt() % 2;
+      int rowIncrement = randgen.nextInt() % 2;
+      /*while (rowIncrement == 0 && colIncrement == 0){
         colIncrement = randgen.nextInt() % 2;
         rowIncrement = randgen.nextInt() % 2;
-      }
+      }*/
 
       String str = wordsToAdd.get(randgen.nextInt(wordsToAdd.size()));
       for (int i = 0; i < 100 & !add; i ++){
