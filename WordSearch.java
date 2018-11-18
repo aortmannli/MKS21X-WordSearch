@@ -1,5 +1,5 @@
-import java.util.*; //random, scanner, arraylist
-import java.io.*; //file, filenotfoundexception
+import java.util.*;
+import java.io.*;
 
 public class WordSearch{
 
@@ -9,41 +9,23 @@ public class WordSearch{
   private ArrayList<String> wordsToAdd;
   private ArrayList<String> wordsAdded;
 
-  public static void main(String[] args)throws FileNotFoundException {
+  public static void main(String[] args){
+    try {
     int rows = Integer.parseInt(args[0]);
     int cols = Integer.parseInt(args[1]);
     String fileN = args[2];
     Random s = new Random();
     int seed = Math.abs(s.nextInt() % 10000);
     boolean answer = false;
-    seed = Integer.parseInt(args[3]);
-
+    if (args.length > 3) seed = Integer.parseInt(args[3]);
     if (args.length == 5 && args[4].equals("key")) {
       answer = true;
     }
-
-
-    WordSearch result = new WordSearch(rows, cols, fileN, seed, answer);
-
-    System.out.println(result);
-
+    new WordSearch(rows, cols, fileN, seed, answer);
   }
-
-  public WordSearch(int rows, int cols, String fileName) throws FileNotFoundException {
-    randgen = new Random();
-    seed = randgen.nextInt();
-    randgen = new Random(seed);
-    data = new char[rows][cols];
-    clear();
-    File f = new File(fileName);
-    Scanner in = new Scanner(f);
-    wordsToAdd = new ArrayList<>();
-    wordsAdded = new ArrayList<>();
-    while (in.hasNext()) {
-      wordsToAdd.add(in.nextLine().toUpperCase());
-    }
-
-    addAllWords();
+  catch (FileNotFoundException e){
+    System.out.println("fix ur file my guy");
+  }
   }
 
   public WordSearch(int rows, int cols, String fileName, int randSeed, boolean ans) throws FileNotFoundException {
@@ -59,17 +41,19 @@ public class WordSearch{
       wordsToAdd.add(in.nextLine().toUpperCase());
     }
     System.out.println(wordsToAdd);
-    addWord("YEET",1,5,1,0);
-    //addAllWords();
+    //addWord("YEET",1,5,1,0);
+    addAllWords();
     if (!ans) {
     fill();
     }
+
+    System.out.println(this);
   }
 
   private void clear(){
     for (int i = 0; i < data.length; i++) {
       for (int x = 0; x < data[0].length; x++) {
-      data[i][x] = '_';
+      data[i][x] = ' ';
       }
     }
   }
@@ -79,15 +63,16 @@ public class WordSearch{
     for (int x = 0; x < data.length; x++) {
       out += "|";
       for (int y = 0; y < data[0].length; y++) {
-          out += data[x][y];
-          if (y < data[0].length - 1) out += " ";
+        out += data[x][y];
+        if (y < data[0].length - 1) out += " ";
       }
       out += "|\n";
     }
     out += "Words: ";
     for (int i = 0; i < wordsAdded.size(); i++){
-      out += wordsAdded.get(i);
+      out += wordsAdded.get(i) + " ";
     }
+    out += "\nSeed: " + seed;
     return out;
   }
 
