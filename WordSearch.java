@@ -63,11 +63,11 @@ public class WordSearch{
 
   public String toString(){
     String out = "";
-    for (int x = 0; x < data.length; x++) {
+    for (int i = 0; i < data.length; i++) {
       out += "|";
-      for (int y = 0; y < data[0].length; y++) {
-        out += data[x][y];
-        if (y < data[0].length - 1) out += " ";
+      for (int x = 0; x < data[0].length; x++) {
+        out += data[i][x];
+        if (x < data[0].length - 1) out += " ";
       }
       out += "|\n";
     }
@@ -99,16 +99,16 @@ public class WordSearch{
   }
 
   private void addAllWords(){
-  // was stuck and Grace Mao explained the algorithm to me so code might have similarities
+  // was stuck and Grace Mao explained the algorithm to me so code might have similarities but I don't think so?
     int x = 0;
     while (!wordsToAdd.isEmpty() && x < 5000){
       boolean add = false;
       int colIncrement = randgen.nextInt() % 2;
       int rowIncrement = randgen.nextInt() % 2;
-      /*while (rowIncrement == 0 && colIncrement == 0){
+      while (rowIncrement == 0 && colIncrement == 0){
         colIncrement = randgen.nextInt() % 2;
         rowIncrement = randgen.nextInt() % 2;
-      }*/
+      }
 
       String str = wordsToAdd.get(randgen.nextInt(wordsToAdd.size()));
       for (int i = 0; i < 100 & !add; i ++){
