@@ -11,21 +11,21 @@ public class WordSearch{
 
   public static void main(String[] args){
     try {
-    int rows = Integer.parseInt(args[0]);
-    int cols = Integer.parseInt(args[1]);
-    String fileN = args[2];
-    Random s = new Random();
-    int seed = Math.abs(s.nextInt() % 10000);
-    boolean answer = false;
-    if (args.length > 3) seed = Integer.parseInt(args[3]);
-    if (args.length == 5 && args[4].equals("key")) {
-      answer = true;
+      int rows = Integer.parseInt(args[0]);
+      int cols = Integer.parseInt(args[1]);
+      String fileN = args[2];
+      Random s = new Random();
+      int seed = Math.abs(s.nextInt() % 10000);
+      boolean answer = false;
+      if (args.length > 3) seed = Integer.parseInt(args[3]);
+      if (args.length == 5 && args[4].equals("key")) {
+        answer = true;
+      }
+      new WordSearch(rows, cols, fileN, seed, answer);
     }
-    new WordSearch(rows, cols, fileN, seed, answer);
-  }
-  catch (FileNotFoundException e){
-    System.out.println("fix ur file my guy");
-  }
+    catch (FileNotFoundException e){
+      System.out.println("please enter a valid file my friend");
+    }
   }
 
   public WordSearch(int rows, int cols, String fileName, int randSeed, boolean ans) throws FileNotFoundException {
@@ -40,13 +40,12 @@ public class WordSearch{
     while (in.hasNext()) {
       wordsToAdd.add(in.nextLine().toUpperCase());
     }
-    System.out.println(wordsToAdd);
-    //addWord("YEET",1,5,1,0);
+
     addAllWords();
     if (!ans) {
-    fill();
+      fill();
     }
-
+    System.out.println();
     System.out.println(this);
   }
 
@@ -119,7 +118,6 @@ public class WordSearch{
       if (!add) x++;
     }
     System.out.println(seed);
-    System.out.println(this);
 
   }
 
