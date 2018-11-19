@@ -11,17 +11,21 @@ public class WordSearch{
 
   public static void main(String[] args){
     try {
-      int rows = Integer.parseInt(args[0]);
-      int cols = Integer.parseInt(args[1]);
-      String fileN = args[2];
-      Random s = new Random();
-      int seed = Math.abs(s.nextInt() % 10000);
-      boolean answer = false;
-      if (args.length > 3) seed = Integer.parseInt(args[3]);
-      if (args.length == 5 && args[4].equals("key")) {
-        answer = true;
+      if (args.length < 3 || Integer.parseInt(args[0]) <= 0 || Integer.parseInt(args[1]) <= 0) {
+        System.out.println("Please enter at least 3 arguments. The first two are expected to ints \nfor the number of columns and rows , then an existing file of words to make your puzzle. \nYou can also add a seed to see a specific puzzle and a boolean taht says key to view the key for the puzzle. \nExample: java WordSearch 30 30 words.txt 631 key");
+      }else{
+        int rows = Integer.parseInt(args[0]);
+        int cols = Integer.parseInt(args[1]);
+        String fileN = args[2];
+        Random s = new Random();
+        int seed = Math.abs(s.nextInt() % 10000);
+        boolean answer = false;
+        if (args.length > 3) seed = Integer.parseInt(args[3]);
+        if (args.length == 5 && args[4].equals("key")) {
+          answer = true;
+        }
+        new WordSearch(rows, cols, fileN, seed, answer);
       }
-      new WordSearch(rows, cols, fileN, seed, answer);
     }
     catch (FileNotFoundException e){
       System.out.println("please enter a valid file my friend");
